@@ -2,34 +2,36 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 import time
 import datetime
 import os
-import schedule
 
-options = Options()
+options = webdriver.ChromeOptions()
 options.binary_location = "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
 options.add_argument("--headless")
-driver = webdriver.Chrome(chrome_options=options, executable_path="c:\\chromedriver\\chromedriver.exe")
-driver.set_page_load_timeout(10)
 entry = "https://bscscan.com"
 scrape_url = "https://bscscan.com/contractsVerified"
 token_file ="./found_tokens.csv"
-
+pd.set_option('display.max_rows', 100)
 
 def generate_url(url):
+    # プロセス大量発生を防ぐためにここに置く
+    driver = webdriver.Chrome(options=options, executable_path="c:\\chromedriver\\chromedriver.exe")
+    driver.set_page_load_timeout(10)
+
     while True:
         try:
             driver.get(scrape_url)
-            break
-        except:
-            print("TIMEOUT ERROR: target url is {}.".format(url))
+            elem_search_btn = driver.find_element_by_xpath(
+                "/html/body/div[1]/main/div[2]/div[1]/div[2]/div/div/form/div[3]/div/span/select/option[4]")
+            elem_search_btn.click()
+            html = driver.page_source.encode("utf-8")
+            driver.close()
+            driver.quit()
+            return html
+        except Exception as e:
+            print(e)
             time.sleep(3)
-    elem_search_btn = driver.find_element_by_xpath("/html/body/div[1]/main/div[2]/div[1]/div[2]/div/div/form/div[3]/div/span/select/option[4]")
-    elem_search_btn.click()
-    html = driver.page_source.encode("utf-8")
-    return html
 
 
 def generate_soup(url, driver_html=None):
@@ -37,8 +39,8 @@ def generate_soup(url, driver_html=None):
         try:
             html = requests.get(url, timeout=3.5)
             break
-        except:
-            print("TIMEOUT ERROR: target url is {}.".format(url))
+        except Exception as e:
+            print(e)
             time.sleep(3)
     soup = BeautifulSoup(html.content, "html.parser")
     if driver_html is not None:
@@ -100,27 +102,24 @@ def read_token_data():
     return data_df
 
 
-def job():
+def main():
     soup = generate_soup(scrape_url, driver_html=generate_url(scrape_url))
     raw_contract_list = soup.find("tbody").find_all("tr")
     dt_now = datetime.datetime.now()
     rdf = read_token_data()
+
     extract_contracts = [
         {"Address": elem.contents[0].text, "Timestamp": dt_now, "Url": url_extract(elem.contents[0].text),
          "Name": elem.contents[1].text, "Txns": elem.contents[5].text, "Verified": elem.contents[7].text,
-         "TokenTracker": None} for elem in raw_contract_list if search_address_from_csv(elem.contents[0].text, rdf)]
+         "TokenTracker": None, "Site": None} for elem in raw_contract_list if search_address_from_csv(elem.contents[0].text, rdf)]
+
     extract_contracts = [contract for contract in extract_contracts if token_filter(contract)]
     wdf = pd.json_normalize(extract_contracts)
     write_token_data(wdf, token_file=token_file)
-    print("new tokens here {}".format(wdf))
-
-
-def main():
-    schedule.every(2).minutes.do(job)
-    while True:
-        schedule.run_pending()
-        time.sleep(1)
+    print(wdf)
 
 
 if __name__ == "__main__":
-    main()
+    while True:
+        main()
+        time.sleep(60)
