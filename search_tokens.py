@@ -14,34 +14,38 @@ scrape_url = "https://bscscan.com/contractsVerified"
 token_file ="./found_tokens.csv"
 pd.set_option('display.max_rows', 100)
 
+
+# １度で失敗する場合に、同じ動作を繰り返し行わせるための関数
+def try_execution(func, *args):
+    while True:
+        try:
+            result = func(*args)
+            return result
+        except Exception as e:
+            print(e)
+            time.sleep(3)
+
+
 def generate_url(url):
     # プロセス大量発生を防ぐためにここに置く
     driver = webdriver.Chrome(options=options, executable_path="c:\\chromedriver\\chromedriver.exe")
     driver.set_page_load_timeout(10)
 
-    while True:
-        try:
-            driver.get(scrape_url)
-            elem_search_btn = driver.find_element_by_xpath(
-                "/html/body/div[1]/main/div[2]/div[1]/div[2]/div/div/form/div[3]/div/span/select/option[4]")
-            elem_search_btn.click()
-            html = driver.page_source.encode("utf-8")
-            driver.close()
-            driver.quit()
-            return html
-        except Exception as e:
-            print(e)
-            time.sleep(3)
+    def inner_func():
+        driver.get(scrape_url)
+        elem_search_btn = driver.find_element_by_xpath(
+            "/html/body/div[1]/main/div[2]/div[1]/div[2]/div/div/form/div[3]/div/span/select/option[4]")
+        elem_search_btn.click()
+        html = driver.page_source.encode("utf-8")
+        driver.close()
+        driver.quit()
+        return html
+    ret = try_execution(inner_func)
+    return ret
 
 
 def generate_soup(url, driver_html=None):
-    while True:
-        try:
-            html = requests.get(url, timeout=3.5)
-            break
-        except Exception as e:
-            print(e)
-            time.sleep(3)
+    html = try_execution(lambda: requests.get(url, timeout=3.5))
     soup = BeautifulSoup(html.content, "html.parser")
     if driver_html is not None:
         soup = BeautifulSoup(driver_html, "html.parser")
@@ -56,7 +60,7 @@ def url_extract(address):
 
 def token_filter(contract):
     soup = generate_soup(contract["Url"])
-    # 条件1: TokenTrackerが存在してるか
+    # TokenTrackerが存在してるか
     exist_token = soup.find_all("div", {"id": "ContentPlaceHolder1_tr_tokeninfo"})
     if exist_token:
         contract["TokenTracker"] = exist_token[0].find("a").text
@@ -80,31 +84,26 @@ def write_token_data(data_df, token_file):
     if not data_df.empty:
         data_df.set_index("Address", inplace=True)
 
-    wait = True
-    while wait:
-        try:
-            if os.path.exists(token_file):
-                data_df.to_csv(token_file, mode="a", header=False)
-            else:
-                data_df.to_csv(token_file)
-            wait = False
-        except PermissionError:
-            print("Permission Error. can't read the csv.")
-            time.sleep(5)
-            wait = True
+    def inner_func(df):
+        if os.path.exists(token_file):
+            df.to_csv(token_file, mode="a", header=False)
+        else:
+            df.to_csv(token_file)
+    try_execution(inner_func, data_df)
 
 
 def read_token_data():
-    try:
-        data_df = pd.read_csv(token_file, usecols=[0])
-    except FileNotFoundError:
-        return None
-    return data_df
+    df = try_execution(lambda: pd.read_csv(token_file, usecols=[0]))
+    return df
 
 
 def main():
-    soup = generate_soup(scrape_url, driver_html=generate_url(scrape_url))
-    raw_contract_list = soup.find("tbody").find_all("tr")
+    def inner_func():
+        soup = generate_soup(scrape_url, driver_html=generate_url(scrape_url))
+        raw_contract_list = soup.find("tbody").find_all("tr")
+        return raw_contract_list
+
+    raw_contract_list = try_execution(inner_func)
     dt_now = datetime.datetime.now()
     rdf = read_token_data()
 
