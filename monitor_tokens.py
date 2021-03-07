@@ -1,6 +1,7 @@
 import pandas as pd
 import os
-import urllib.request, urllib.error
+import urllib.request
+import urllib.error
 import requests
 from concurrent import futures
 import numpy as np
@@ -8,10 +9,14 @@ from bs4 import BeautifulSoup
 import re
 from search_tokens import search_address_from_csv, write_token_data, token_file as found_tokens_file, generate_soup
 monitor_tokens_file = "./monitor_tokens.csv"
-domains = [".com", ".org", ".app", ".io", ".finance", ".farm", ".net", ".money"]
-filter_list = ["Token", "token", "TOKEN", "Swap", "swap", "SWAP", "Finance", "finance", "FINANCE", "t.me/", "BSC", "Farm", "farm", "FARM", ".net", ".Net", ".NET", ".com", ".COM", ".finance", ".Finance", ".FINANCE", ".io", ".farm", ".Farm", ".FARM", "_"]
-html_filter = ["Binance", "binance", "Farm", "farm", "swap", "Swap", "BEP20", "exchange", "Exchange", "Contract", "contract", "DeFi", "BTC", "btc", "Staking", "staking", "Pool", "pool", "Yield", "yield"]
+domains = [".com", ".org", ".app", ".io",
+           ".finance", ".farm", ".net", ".money"]
 add_netlocs = ["", "swap", "finance", "farm"]
+
+filter_list = ["Token", "token", "TOKEN", "Swap", "swap", "SWAP", "Finance", "finance", "FINANCE", "t.me/", "BSC", "Farm", "farm",
+               "FARM", ".net", ".Net", ".NET", ".com", ".COM", ".finance", ".Finance", ".FINANCE", ".io", ".farm", ".Farm", ".FARM", "_", "|"]
+html_filter = ["Binance", "binance", "Farm", "farm", "swap", "Swap", "BEP20", "exchange", "Exchange", "Contract", "contract",
+               "DeFi", "BTC", "btc", "Staking", "staking", "Pool", "pool", "Yield", "yield", "TOKEN", "Token", "token", "Hokder", "holder"]
 
 
 def check_url(url):
@@ -34,10 +39,12 @@ def main():
     if os.path.exists(monitor_tokens_file):
 
         # add new tokens
-        monitor_tokens_df = pd.read_csv(monitor_tokens_file).loc[:,["Address", "TokenTracker", "Website"]]
+        monitor_tokens_df = pd.read_csv(monitor_tokens_file).loc[:, [
+            "Address", "TokenTracker", "Website"]]
         found_tokens_df = pd.read_csv(found_tokens_file, usecols=[0, 6])
         found_tokens_df["Website"] = pd.Series()
-        monitor_tokens_df = monitor_tokens_df.append(found_tokens_df).drop_duplicates("Address")
+        monitor_tokens_df = monitor_tokens_df.append(
+            found_tokens_df).drop_duplicates("Address")
 
         # make url lists
         url_check_dict = {}
@@ -56,7 +63,7 @@ def main():
         # check the url
 
         # singleprocess
-        #for i, url_list in enumerate(url_check_list):
+        # for i, url_list in enumerate(url_check_list):
         #    print(monitor_tokens_df["TokenTracker"][i])
         #    for url in url_list:
         #        if check_url(url):
@@ -65,23 +72,26 @@ def main():
         # multiprocess
         for token_address, url_list in url_check_dict.items():
             token_address = token_address.replace(" ", "")
-            idx = monitor_tokens_df["Address"].str.contains(token_address).tolist().index(True)
+            idx = monitor_tokens_df["Address"].str.contains(
+                token_address).tolist().index(True)
             result = []
             with futures.ProcessPoolExecutor() as executor:
-                mappings = {executor.submit(check_url, url): url for url in url_list}
+                mappings = {executor.submit(
+                    check_url, url): url for url in url_list}
                 for future in futures.as_completed(mappings):
                     result.append(future.result())
             result_url = "".join(result)
-            website = monitor_tokens_df["Website"][idx]
+
+            # ilocで要素とらないと要らないものまでついてくる。
+            website = monitor_tokens_df.iloc[idx, 2]
             if pd.isnull(website):
-                monitor_tokens_df["Website"][idx] = result_url
+                monitor_tokens_df.iloc[idx, 2] = result_url
             elif website == result_url:
                 pass
             else:
-                monitor_tokens_df["Website"][idx] = website + " " + result_url
+                monitor_tokens_df.iloc[idx, 2] = website + " " + result_url
         monitor_tokens_df.set_index("Address", inplace=True)
         monitor_tokens_df.to_csv(monitor_tokens_file)
-
     else:
         found_tokens_df = pd.read_csv(found_tokens_file, usecols=[0, 6])
         found_tokens_df["Website"] = None
@@ -91,5 +101,3 @@ def main():
 if __name__ == "__main__":
     while True:
         main()
-    
-    "test_branch string"
