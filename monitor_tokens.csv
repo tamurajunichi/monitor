@@ -15,11 +15,11 @@ Address,TokenTracker,Website
  0xd9a565a4f0ba508f468602785ad557b4943265f5,PETALITE.FINANCE (PET),
  0x6d0e1A696C927B8d403144F6bBe3080637488ae7,HonorBar Token (HONOR),
  0xC36649fF473e0a558eC50b0F8ce650940B9BA701,KnightSwap Token (KNIGHT),
- 0x702f22C4397c000Aa828F52a0e70B087A6Fe5DD1,Bull Finance (BULL),
+ 0x702f22C4397c000Aa828F52a0e70B087A6Fe5DD1,Bull Finance (BULL),http://Bullswap.net
  0x636015E62b9dE78D164a48454BaD727Ea3640a60,Offy Delivered LTD (OFFY),
  0xab17fc14a1804b34fd67b67efcc986d425e94e02,NowLiquidity (NLQ),
  0x2ada862d803b8b734b937843f8f76609310f3da7,Gobi Coin (GBC),
- 0x0ae95d1645bcd6a85d61ffdb26eaff8c7462d6b7,Meow Token (Meow),
+ 0x0ae95d1645bcd6a85d61ffdb26eaff8c7462d6b7,Meow Token (Meow),http://Meowswap.org
  0x61e09eC57A5fcA440b9F6F024De668dafaA3ffa7,SIGN.NET (SIGN),
  0x178a5bfcbb80db82f54aeba1c7061828ee7046e4,Buffalo Finance (BUFF),http://Buffalo.finance
  0xbdb1c880904b39a009da0c7a12dc9d029c1f1c60,copsfinance.com (COPS),
@@ -38,7 +38,7 @@ Address,TokenTracker,Website
  0x4504cfd2f7b3a31e6cdad3d621f81c29f29f52a1,DEFIX.ASIA (DEF),
  0x40b1eeaa8a675942941286732ca258fa79c72ee2,Grizzly by bears.finance (GBEAR),
  0x010bad2b8de098a1649d5cc04810490aaeb7d20c,BSC FINANCE (BSCv2),
- 0x30938fd95ee9ec20e1c0344520e098ec6c3991d6,Jojo Token (JOJO),http://Jojoswap.org http://Jojoswap.orghttp://Jojoswap.finance http://Jojoswap.orghttp://Jojoswap.finance http://Jojoswap.orghttp://Jojoswap.finance http://Jojoswap.orghttp://Jojoswap.finance http://Jojoswap.orghttp://Jojoswap.finance http://Jojoswap.orghttp://Jojoswap.finance http://Jojoswap.orghttp://Jojoswap.finance http://Jojoswap.orghttp://Jojoswap.finance http://Jojoswap.orghttp://Jojoswap.finance http://Jojoswap.orghttp://Jojoswap.finance http://Jojoswap.orghttp://Jojoswap.finance http://Jojoswap.orghttp://Jojoswap.finance http://Jojoswap.orghttp://Jojoswap.finance http://Jojoswap.orghttp://Jojoswap.finance http://Jojoswap.orghttp://Jojoswap.finance http://Jojoswap.orghttp://Jojoswap.finance http://Jojoswap.orghttp://Jojoswap.finance http://Jojoswap.orghttp://Jojoswap.finance http://Jojoswap.orghttp://Jojoswap.finance http://Jojoswap.orghttp://Jojoswap.finance http://Jojoswap.orghttp://Jojoswap.finance http://Jojoswap.orghttp://Jojoswap.finance http://Jojoswap.orghttp://Jojoswap.finance
+ 0x30938fd95ee9ec20e1c0344520e098ec6c3991d6,Jojo Token (JOJO),
  0xaca834b097ace27c9ef5d89319e192e9f281bd4d,Auto Farming (ATFM),
  0xe02a785dd20aabd3a1bfeee7ab5ea53212f5b6b5,Ojancok (JNCK),
  0x773727aac0997de623890af07bab1adcd9dd315e,Matrx.Finance (MTX),
@@ -101,8 +101,8 @@ Address,TokenTracker,Website
  0x7dd16484946c7720457b1fdc52b22c48a4a8d027,Socks (SOCK),
  0xd29c6edb9accbb84b26800e95e0d1accbef85324,Ozon Finance (ZON),
  0xab936901ae0534ab13bd7d1c8b38b22adb772f20,bigpug.finance (BPUG),
- 0x3aeb6dee52ed6772f26c68bac63f121121d7092f,BeeSwap Finance (BEE),http://Bee.com  http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com http://Bee.com
- 0x36C0556c2B15aED79F842675Ff030782738eF9e8,BlueToken (BLUE),http://Blueswap.finance   http://Blueswap.finance http://Blueswap.finance http://Blueswap.finance http://Blueswap.finance http://Blueswap.finance http://Blueswap.finance http://Blueswap.finance http://Blueswap.finance http://Blueswap.finance http://Blueswap.finance
+ 0x3aeb6dee52ed6772f26c68bac63f121121d7092f,BeeSwap Finance (BEE),http://Bee.com
+ 0x36C0556c2B15aED79F842675Ff030782738eF9e8,BlueToken (BLUE),http://Blueswap.finance
  0xAC6941d2FA22732E8D6253C0Eac208574C9DCA2e,TuttySwap (Tutty),
  0x7ce9f1a8e494d49e59a72fd0443d378448151b9c,VSafeVault:BUSD (vSafeBUSD),
  0x92f15d7b2cb068ed93e03a41a647d8e06ca4c5a1,Non-Fungible Yearn (NFY),
@@ -161,7 +161,7 @@ Address,TokenTracker,Website
  0x22c865fbafaa9d67bec50eb1996271825fbd9f92,miniSOCKS (mSOCKS),
  0x9c1ea126984e5124501e8f0df4961a5b875bb634,xyzSocks (xyzSocks),http://xyzSocks.finance
  0x859c76226697c300ceb0e372960cc16d5090084d,PancakeSocks (PCS),
- 0x24d5da8a2d9c26d1020fa7fedc9b1124c68c5956,MeowSwap Token (MEOW),
+ 0x24d5da8a2d9c26d1020fa7fedc9b1124c68c5956,MeowSwap Token (MEOW),http://Meowswap.org
  0xf92ebc5952912998e6cd6afd46026924762eb63e,moneySocks (MONEYSocks),
  0xad5c80a689ef5ddd62dd0922c957aa66a5ebd9c5,AnkleSocks (AnkleSocks),
  0x6b325f8012e1d5b6b07751ad2ee8b79bd81199e1,Red SOCKS (redSOCKS),
@@ -178,14 +178,14 @@ Address,TokenTracker,Website
  0xdaa54f48b93c12e32f36533acaccd8d1e7c4ccaf,lightningprotocol.finance (LIGHT),
  0x8Cc37645E81A8ccBB2CD8A27EACa7bdfD1cb3baB,UniFiSocks (UFiSocks),
  0xcf872f20ffaa164750f070ac06c000b570c8041b,MAKE MORE MONEY (M3C),
- 0xbe65646F89EA12B74797aD5444c2F22E0D5a5363,NarutoSwap (Naruto),
+ 0xbe65646F89EA12B74797aD5444c2F22E0D5a5363,NarutoSwap (Naruto),http://Narutoswap.com
  0xD7826915aA358918Ed3F1719b589e83F1cb56FF1,NarutoSwap V1 (Naruto V1),
  0xAe2b7b5Ca995c6E0FE1e0766F544C1601967075c,Fusible | Fusible.io (FUSI),
  0x38dc2673525c73955bb3b03395956a191550ea76,SocksFarm (FSOCKS),
  0x53c0ce2ebda0c2a39327be0b58a3c28a8dcde420,Moo Venus ADA (mooVenusA...),
  0x68e5b15fbc7f3b4cd008dc7962ce8ea646dc2291,Project Panda (PNDA),
  0x0cd36c2ce6704ce74ec516fe3980edd427d15b53,fusible.io (FUSI),
- 0xf541e0790ba97bab64705602f919a18db613c0d5,Pangolin (PNG),
+ 0xf541e0790ba97bab64705602f919a18db613c0d5,Pangolin (PNG),http://Pangolinswap.com
  0x3ee12e8cd0ea947b88c253341a117792388c91dd,TWOSocks (2SOCKS),
  0x39d75f5501807A90a4B83aeD80035b5061c0986e,ShibDefi (SHIBD),http://ShibDefi.finance                                                          
  0x032d6a55c9e64e420d12a7d096ddb75486fcf2a0,Dandelion Finance (DAN),
@@ -203,11 +203,11 @@ Address,TokenTracker,Website
  0x8ff77b03e603fb117b531d7a360cb5ed5ef25cb9,Ernte LPs (ELP),
  0xf8f6a66cf15ddfe54b04891765bc53fa80bd678d,Duck Token (DUCK),http://Duckswap.finance
  0x028fe1170ecc257ddb7c5710cf4f7b0cbb6652c5,Work DAO (WORK),
- 0x662e4ee28ea12d2974b1bd678e295cccb846e9d3,bscview.com (BSCVIEW),http://bscview.com                     http://bscview.com http://bscview.com http://bscview.com http://bscview.com http://bscview.com http://bscview.com http://bscview.com http://bscview.com http://bscview.com http://bscview.com http://bscview.com http://bscview.com http://bscview.com http://bscview.com http://bscview.com http://bscview.com http://bscview.com http://bscview.com    http://bscview.com http://bscview.com
+ 0x662e4ee28ea12d2974b1bd678e295cccb846e9d3,bscview.com (BSCVIEW),http://bscview.com
  0xcEE306fCc485e6716F807FAb09c869b4995BD7D4,DEFI100Farm Token (xD100),
  0x318e47633f2e1665772c4efcd2df9127e7d6dbaa,KappiNetwork (KAPPI),
  0x6b06F4b2e3c3AbA9A4cB90e42B68fb3663609465,MERIT Token (MERIT),
- 0x75d5d153ac2d1d896056f25b53c7a2471fa7388b,Mercipith (MERCY),
+ 0x75d5d153ac2d1d896056f25b53c7a2471fa7388b,Mercipith (MERCY),http://Mercipith.com
  0x3fbc4d713e44796006e67b4d1e20a048eee632bb,Ozark Finance (ZRK),
  0xbe0455c310a731b3097c5d56bfaf0f07d82d60c6,HKSwap Token (HKS),
  0xf845031cc790d4e4b251e9079d7fc75215ce9205,CITRON (CTR),
@@ -294,7 +294,7 @@ Address,TokenTracker,Website
  0xb009A196CfA55A6bbB9fa561A2341911AaBa99F1,Decentraliz3d Oracl3 (D3DO3),
  0x41327623be721cf3200189b419ab5fd92a9120df,Siren (SI),
  0x314a358652B6ed3dF6493e2B57aD26E6eB9D5b81,ROCKETSWAP (ROCKET),
- 0x7acff19cf50ae05409a17c367b5893bb7a04b487,Bread Finance (BFI),http://Breadswap.org  http://Breadswap.org http://Breadswap.org http://Breadswap.org
+ 0x7acff19cf50ae05409a17c367b5893bb7a04b487,Bread Finance (BFI),http://Breadswap.org
  0x400df62c3052fdbaad8c74c0226147f9bfaaf7ec,Eternal Cash (EC),
  0xd6edfa2384ff463b4c2293d86e407ffd88b2fe3a,Bomb Finance (BMB),
  0x983784bb6cab5f58dd9e2abc1b1a3a03aa7fac32,Eternal Cash (EC),
@@ -382,7 +382,7 @@ Address,TokenTracker,Website
  0x8c36c015f0852b3673590a93ed4596bdd9d776c2,MARILYN (MONROE),
  0xE67c1EE14E41600042Bcd2f0d908D6CBF6630acf,BridgeDEX TOKEN (bDEX),
  0x2c5eb45aba487db5136dbe5033a74b61d7fd8501,Steak Finance (STEAK),
- 0xeD01823875bfab526DFdD5065fb6447E6EBE4845,unisocks.xyz (UNIXYZ),http://unisocks.xyz.com  http://unisocks.xyz.com http://unisocks.xyz.com
+ 0xeD01823875bfab526DFdD5065fb6447E6EBE4845,unisocks.xyz (UNIXYZ),http://unisocks.xyz.com
  0x12017c57efc2d46c856c39850f171efc53428f60,Plum Finance (PLX),
  0x16A437Ec46321E674Bf0F9167D44F9e0159E0115,MEME CASH (bMCH),
  0x3608662D8a87377B677Ca29d5ecACa0334EC117c,OSHEAGA.com (OSHEAGA),
@@ -434,7 +434,7 @@ Address,TokenTracker,Website
  0x971466B2ACe31fCFf6395cd90fA6E70F3046e642,JuiceToken (JUICY),
  0x32424265F9eB00015FA93dAc97F8EF5B78f3d007,Shire Coin (SHR),
  0x6c279360a62146dB0998D0FE9067190331e77C9A,GorillaFi (gFi),http://GorillaFi.com
- 0x523780cfb63fe4546d533b2cf36e5217accf9ba6,KittenFinance (KITTEN),
+ 0x523780cfb63fe4546d533b2cf36e5217accf9ba6,KittenFinance (KITTEN),http://Kittenfarm.finance
  0x50092108cabd2A7BD468a8e8134660CBBBCB5937,Moon Token (MOON),
  0x92a42Db88Ed0F02c71D439e55962Ca7CAB0168b5,Tardigrades.Finance (TRDG),
  0xe8f86740ad376f565ee55399fcdf5843c6e20276,VSafeVault:VSwapVBSwapWBNB (vSafeVBSw...),
@@ -450,7 +450,7 @@ Address,TokenTracker,Website
  0x6a545f9c64d8f7b957d8d2e6410b52095a9e6c29,CyberFi Token (CFi),
  0xbac5c2ef8033be6408fca269f40f9e96d0d6bf80,Shopping.io on BSC (SPI),
  0x897c56fbaa3456ba20b29efefbb4a2a89d7427a8,AirSwap (AST),
- 0x9e0846677ea91ea5308d3f525c09e782ef17da21,KittenFinance (KIF),
+ 0x9e0846677ea91ea5308d3f525c09e782ef17da21,KittenFinance (KIF),http://Kittenfarm.finance
  0x354bcec10cfd5c8ce285c73093b3edb7bb3c4888,JPY Coin (JPYC),
  0xceebde49ec95e21f7ee63c5c6f98cab3519570de,Wrapped STA (WSTA),
  0xab671ea900a8e3c959f5bd29ceb5e370ba75bb9e,DefiPulse Index (DPI),

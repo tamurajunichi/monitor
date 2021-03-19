@@ -8,7 +8,7 @@ import numpy as np
 from bs4 import BeautifulSoup
 import re
 from search_tokens import search_address_from_csv, write_token_data, token_file as found_tokens_file, generate_soup
-monitor_tokens_file = "./monitor_tokens_test.csv"
+monitor_tokens_file = "./monitor_tokens.csv"
 domains = [".com", ".org", ".app", ".io",
            ".finance", ".farm", ".net", ".money"]
 add_netlocs = ["", "swap", "finance", "farm"]
@@ -84,11 +84,16 @@ def main():
             # ilocで要素とらないと要らないものまでついてくる。
             website = monitor_tokens_df.iloc[idx, 2]
             if pd.isnull(website):
-                monitor_tokens_df.iloc[idx, 2] = result_url
-            elif result_url in website:
-                pass
+                monitor_tokens_df.iloc[idx, 2] = " ".join(result_url)
+            elif type(website) is str:
+                website = website.split(" ")
+                for url in result_url:
+                    if url in website:
+                        result_url.remove(url)
+                    else:
+                        monitor_tokens_df.iloc[idx, 2] = " ".join(website) + " " + " ".join(result_url)
             else:
-                monitor_tokens_df.iloc[idx, 2] = website + " " + result_url
+                print("type error")
         monitor_tokens_df.set_index("Address", inplace=True)
         monitor_tokens_df.to_csv(monitor_tokens_file)
     else:
