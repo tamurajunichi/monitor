@@ -41,10 +41,10 @@ def main():
         # add new tokens
         monitor_tokens_df = pd.read_csv(monitor_tokens_file).loc[:, [
             "Address", "TokenTracker", "Website"]]
-        found_tokens_df = pd.read_csv(found_tokens_file, usecols=[0, 6])
-        found_tokens_df["Website"] = pd.Series()
-        monitor_tokens_df = monitor_tokens_df.append(
-            found_tokens_df).drop_duplicates("Address")
+        #found_tokens_df = pd.read_csv(found_tokens_file, usecols=[0, 6])
+        #found_tokens_df["Website"] = pd.Series()
+        #monitor_tokens_df = monitor_tokens_df.append(
+        #    found_tokens_df).drop_duplicates("Address")
 
         # make url lists
         url_check_dict = {}
@@ -74,22 +74,27 @@ def main():
             token_address = token_address.replace(" ", "")
             idx = monitor_tokens_df["Address"].str.contains(
                 token_address).tolist().index(True)
-            result = []
+            worker_results = []
             with futures.ProcessPoolExecutor() as executor:
-                mappings = {executor.submit(
-                    check_url, url): url for url in url_list}
+                mappings = {executor.submit(check_url, url): url for url in url_list}
                 for future in futures.as_completed(mappings):
-                    result.append(future.result())
-            result_url = "".join(result)
+                    worker_results.append(future.result())
+            result_url = [result for result in worker_results if len(result)]
 
             # ilocで要素とらないと要らないものまでついてくる。
             website = monitor_tokens_df.iloc[idx, 2]
             if pd.isnull(website):
-                monitor_tokens_df.iloc[idx, 2] = result_url
-            elif website == result_url:
-                pass
+                monitor_tokens_df.iloc[idx, 2] = " ".join(result_url)
+            elif type(website) is str:
+                website = website.split(" ")
+                for url in result_url:
+                    if url in website:
+                        result_url.remove(url)
+                    else:
+                        monitor_tokens_df.iloc[idx, 2] = " ".join(website) + " " + " ".join(result_url)
             else:
-                monitor_tokens_df.iloc[idx, 2] = website + " " + result_url
+                print("websiteの型がstrでも、nanでもない場合のエラー")
+                exit()
         monitor_tokens_df.set_index("Address", inplace=True)
         monitor_tokens_df.to_csv(monitor_tokens_file)
     else:
