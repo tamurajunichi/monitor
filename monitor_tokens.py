@@ -93,7 +93,8 @@ def main():
                     else:
                         monitor_tokens_df.iloc[idx, 2] = " ".join(website) + " " + " ".join(result_url)
             else:
-                print("type error")
+                print("websiteの型がstrでも、nanでもない場合のエラー")
+                exit()
         monitor_tokens_df.set_index("Address", inplace=True)
         monitor_tokens_df.to_csv(monitor_tokens_file)
     else:
